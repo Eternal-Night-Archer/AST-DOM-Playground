@@ -3,12 +3,14 @@ package dev.skyleaworlder.astparserdemo.visitor;
 import dev.skyleaworlder.astparserdemo.utils.CUFactory;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 
 public class BoringVisitorTest {
-    public static void main(String[] args) throws IOException {
+    @Test
+    public void testAcceptBoringVisitor() throws IOException {
         String sourceFilePath = System.getProperty("user.dir")
                 + File.separator + "demo"
                 + File.separator + "example"
