@@ -1,4 +1,4 @@
-package dev.skyleaworlder.astparserdemo.ast;
+package dev.skyleaworlder.astparserdemo.utils;
 
 import org.eclipse.jdt.core.dom.*;
 

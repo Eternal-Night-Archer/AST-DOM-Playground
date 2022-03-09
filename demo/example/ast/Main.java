@@ -1,4 +1,4 @@
-package demo.example;
+package demo.example.ast;
 
 public class Main {
     class InnerMain {
@@ -6,6 +6,7 @@ public class Main {
         }
 
         class InnerInnerClass2 {
+            protected char prop = 'i';
         }
         public void main(String[] args) {
             System.out.println("Soot tutorial disordered my life");
@@ -21,6 +22,12 @@ public class Main {
         IfStmt i1 = new IfStmt(3);
         IfStmt i2 = new IfStmt(2);
         WhileStmt w1 = new WhileStmt(4);
+
+        if (i1 instanceof IfStmt) {
+            res = 0;
+        } else {
+            res = 1;
+        }
 
         for (int cnt = 0; cnt < 6; cnt++) {
             if (cnt % 2 == 0) {

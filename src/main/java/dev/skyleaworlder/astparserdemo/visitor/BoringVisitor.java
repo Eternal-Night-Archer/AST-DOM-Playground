@@ -1,9 +1,10 @@
-package dev.skyleaworlder.astparserdemo.ast;
+package dev.skyleaworlder.astparserdemo.visitor;
 
 import org.eclipse.jdt.core.dom.*;
 
 import java.util.List;
 
+// DFS perhaps
 public class BoringVisitor extends ASTVisitor {
     @Override
     public boolean visit(TypeDeclaration node) {
@@ -11,13 +12,29 @@ public class BoringVisitor extends ASTVisitor {
         System.out.println("  - Fields Num: " + node.getFields().length);
         System.out.println("  - Methods Num: " + node.getMethods().length);
         System.out.println("  - Type Num: " + node.getTypes().length);
+        System.out.println("  - Parent Type: " + node.getParent().getClass().getName());
+        return true;
+    }
+
+    @Override
+    public boolean visit(MethodDeclaration node) {
+        System.out.println(" ==================== Method Declaration:");
+        System.out.println("  - Method Name: " + node.getName());
+        System.out.println("  - Return Type: " + node.getReturnType2());
+        System.out.print("  - Parameter: ");
+        List<SingleVariableDeclaration> params = node.parameters();
+        params.forEach(param -> {
+            System.out.print(param.getName() + "; ");
+        });
+        System.out.println();
+        System.out.println("  - Parent Type: " + node.getParent().getClass().getName());
         return true;
     }
 
     @Override
     public boolean visit(SimpleType node) {
         System.out.println(" ==================== Simple Type:");
-        System.out.println("  - Name: " + node.getName() + " | " + node.getName().getFullyQualifiedName());
+        System.out.println("  - Name: " + node.getName().getFullyQualifiedName());
         System.out.println("  - Parent Type: " + node.getParent().getClass().getName());
         return true;
     }

@@ -34,10 +34,19 @@ public class ASTAnalyzer {
             System.out.println("Init: " + fstmt.initializers());
             System.out.println("Continue Condition: " + fstmt.getExpression());
             System.out.println("Updaters: " + fstmt.updaters());
+            // The type of Body in ForStatement is Statement,
+            // but it is often jdt.core.dom.Block.
             System.out.println("Body: ");
             ASTAnalyzer.analyzeStmt(fstmt.getBody());
         } else if (node instanceof IfStatement) {
-
+            IfStatement istmt = (IfStatement) node;
+            System.out.println("Expression: " + istmt.getExpression());
+            // The type of getThenStatement's return type is Statement,
+            // but it is often jdt.core.dom.Block.
+            System.out.println("ThenStatement: " + istmt.getThenStatement().getClass().getName());
+            // The type of getElseStatement's return type is Statement,
+            // but it is often jdt.core.dom.Block.
+            System.out.println("ElseStatement: " + istmt.getElseStatement().getClass().getName());
         } else if (node instanceof WhileStatement) {
 
         } else {
